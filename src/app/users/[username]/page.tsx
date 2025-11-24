@@ -17,6 +17,7 @@ import {
 import { Button } from '@/components/ui/button'
 import EditUser from '@/components/EditUser'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { ChartLineMultiple } from '@/components/ChartLineMultiple'
 
 const SingleUserPage = () => {
   return (
@@ -163,7 +164,9 @@ const SingleUserPage = () => {
         <p className='text-sm text-muted-foreground'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem ex repellat aliquid ducimus reprehenderit? Ut eveniet, magni ad obcaecati voluptatum molestias temporibus deserunt quis et in iste ipsum blanditiis sit exercitationem reprehenderit ipsa repudiandae explicabo consequatur error quod impedit hic! Assumenda mollitia ipsa et aliquid dolore possimus? Reiciendis, ad quibusdam?</p>
       </div>
        {/* CHART CONTAINER */}
-      <div className="bg-primary-foreground p-4 rounded-lg">chart card</div>
+      <div className="bg-primary-foreground p-4 rounded-lg">
+        <h1 className='ext-xl font-semibold mb-4 text-center'>User Activity</h1>
+        <ChartLineMultiple/></div>
        </div>
     </div>
     </div>

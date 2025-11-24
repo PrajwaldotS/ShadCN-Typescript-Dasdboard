@@ -12,9 +12,14 @@ const items = [
         icon:Home
     },
     {
-        title:"Inbox",
-        url:"/",
+        title:"Users",
+        url:"/users/username",
         icon:Inbox
+    },
+    {
+        title:"Payment",
+        url:"/payments",
+        icon:Calendar
     },
     {
         title:"Settings",
@@ -26,11 +31,7 @@ const items = [
         url:"/",
         icon:Search
     },
-    {
-        title:"Calendar",
-        url:"/",
-        icon:Calendar
-    },
+    
 ]
 const AppSidebar = () => {
   return (

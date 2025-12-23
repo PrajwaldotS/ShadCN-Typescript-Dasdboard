@@ -1,7 +1,12 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
+import {
+  PolarAngleAxis,
+  PolarGrid,
+  Radar,
+  RadarChart,
+} from "recharts"
 
 import {
   Card,
@@ -12,66 +17,82 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import {
-  ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "@/components/ui/chart"
 
-export const description = "A radar chart with dots"
+/* -------------------- TYPES -------------------- */
 
-const chartData = [
-  { month: "Malware", desktop: 78 },
-  { month: "Phishing", desktop: 65 },
-  { month: "DDoS", desktop: 52 },
-  { month: "Insider Threats", desktop: 48 },
-  { month: "Ransomware", desktop: 70 },
-  { month: "Zero-Day Exploits", desktop: 60 },
-];
+type RadarDotsChartData = Record<string, string | number>
 
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "#f97316",
-  },
-} satisfies ChartConfig
+type AppRadarDotsChartProps = {
+  title: string
+  description: string
+  chartData: RadarDotsChartData[]
+  chartConfig: ChartConfig
+  angleKey?: string
+  radarKey?: string
+  dotSize?: number
+  footerText: string
+  footerSubText: string
+}
 
-export function ChartRadarDots() {
+/* -------------------- COMPONENT -------------------- */
+
+export function ChartRadarDots({
+  title,
+  description,
+  chartData,
+  chartConfig,
+  angleKey = "month",
+  radarKey = "desktop",
+  dotSize = 4,
+  footerText,
+  footerSubText,
+}: AppRadarDotsChartProps) {
   return (
     <Card>
       <CardHeader className="items-center">
-        <CardTitle>Threat Severity Distribution</CardTitle>
-        <CardDescription>
-         Analysis of cyber threat intensity across major attack vectors.
-        </CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
+
       <CardContent className="pb-0">
         <ChartContainer
           config={chartConfig}
           className="mx-auto aspect-square max-h-[250px]"
         >
           <RadarChart data={chartData}>
-            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-            <PolarAngleAxis dataKey="month" />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent />}
+            />
+
+            <PolarAngleAxis dataKey={angleKey} />
             <PolarGrid />
+
             <Radar
-              dataKey="desktop"
-              fill="var(--color-desktop)"
+              dataKey={radarKey}
+              fill={`var(--color-${radarKey})`}
               fillOpacity={0.6}
               dot={{
-                r: 4,
+                r: dotSize,
                 fillOpacity: 1,
               }}
             />
           </RadarChart>
         </ChartContainer>
       </CardContent>
+
       <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 leading-none font-medium">
-          Elevated risk detected <TrendingUp className="h-4 w-4" />
+        <div className="flex items-center gap-2 font-medium leading-none">
+          {footerText}
+          <TrendingUp className="h-4 w-4" />
         </div>
-        <div className="text-muted-foreground text-center flex items-center gap-2 leading-none">
-          Last 30 Days <br /> Security Operations Center (SOC)
+        <div className="text-muted-foreground text-center leading-none">
+          {footerSubText}
         </div>
       </CardFooter>
     </Card>

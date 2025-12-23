@@ -22,29 +22,55 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart"
 
-export const description = "A radial chart with text"
+/* -------------------- TYPES -------------------- */
 
-const chartData = [
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-]
+type RadialTextChartData = Record<string, string | number>
 
-const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  safari: {
-    label: "Safari",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig
+type AppRadialTextChartProps = {
+  title: string
+  description: string
+  chartData: RadialTextChartData[]
+  chartConfig: ChartConfig
+  valueKey?: string
+  nameKey?: string
+  centerLabel: string
+  startAngle?: number
+  endAngle?: number
+  innerRadius?: number
+  outerRadius?: number
+  footerText: string
+  footerSubText: string
+}
 
-export function ChartRadialText() {
+/* -------------------- COMPONENT -------------------- */
+
+export function AppRadialTextChart({
+  title,
+  description,
+  chartData,
+  chartConfig,
+  valueKey = "visitors",
+  nameKey = "browser",
+  centerLabel,
+  startAngle = 0,
+  endAngle = 250,
+  innerRadius = 80,
+  outerRadius = 110,
+  footerText,
+  footerSubText,
+}: AppRadialTextChartProps) {
+  const value =
+    typeof chartData?.[0]?.[valueKey] === "number"
+      ? (chartData[0][valueKey] as number)
+      : 0
+
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Radial Chart - Text</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
+
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
@@ -52,59 +78,70 @@ export function ChartRadialText() {
         >
           <RadialBarChart
             data={chartData}
-            startAngle={0}
-            endAngle={250}
-            innerRadius={80}
-            outerRadius={110}
+            startAngle={startAngle}
+            endAngle={endAngle}
+            innerRadius={innerRadius}
+            outerRadius={outerRadius}
           >
             <PolarGrid
               gridType="circle"
               radialLines={false}
               stroke="none"
               className="first:fill-muted last:fill-background"
-              polarRadius={[86, 74]}
+              polarRadius={[innerRadius + 6, innerRadius - 6]}
             />
-            <RadialBar dataKey="visitors" background cornerRadius={10} />
+
+            <RadialBar
+              dataKey={valueKey}
+              nameKey={nameKey}
+              background
+              cornerRadius={10}
+            />
+
             <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
               <Label
                 content={({ viewBox }) => {
-                  if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                    return (
-                      <text
+                  if (!viewBox || !("cx" in viewBox) || !("cy" in viewBox)) {
+                    return null
+                  }
+
+                  return (
+                    <text
+                      x={viewBox.cx}
+                      y={viewBox.cy}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                    >
+                      <tspan
                         x={viewBox.cx}
                         y={viewBox.cy}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
+                        className="fill-foreground text-4xl font-bold"
                       >
-                        <tspan
-                          x={viewBox.cx}
-                          y={viewBox.cy}
-                          className="fill-foreground text-4xl font-bold"
-                        >
-                          {chartData[0].visitors.toLocaleString()}
-                        </tspan>
-                        <tspan
-                          x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground"
-                        >
-                          Visitors
-                        </tspan>
-                      </text>
-                    )
-                  }
+                        {value.toLocaleString()}
+                      </tspan>
+                      <tspan
+                        x={viewBox.cx}
+                        y={(viewBox.cy as number) + 24}
+                        className="fill-muted-foreground"
+                      >
+                        {centerLabel}
+                      </tspan>
+                    </text>
+                  )
                 }}
               />
             </PolarRadiusAxis>
           </RadialBarChart>
         </ChartContainer>
       </CardContent>
+
       <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 leading-none font-medium">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+        <div className="flex items-center gap-2 font-medium leading-none">
+          {footerText}
+          <TrendingUp className="h-4 w-4" />
         </div>
         <div className="text-muted-foreground leading-none">
-          Showing total visitors for the last 6 months
+          {footerSubText}
         </div>
       </CardFooter>
     </Card>

@@ -1,15 +1,18 @@
 import { AppAreaChart } from "@/components/AppAreaChart"
 import AppBarChart from "@/components/AppBarChart"
 import Appradialchart from "@/components/Appradialchart"
+import CardList from "@/components/Cardlist"
 import Cardlist from "@/components/Cardlist"
-import { ChartRadarDots } from "@/components/ChartRadarDots"
+import { ChartRadarDots }  from "@/components/ChartRadarDots"
 import { ChartConfig } from "@/components/ui/chart"
 import { SectionCards } from "@/components/ui/sectioncard"
 
 export type TrendType = "up" | "down"
 
 /* ---------------- BAR CHART DATA ---------------- */
-
+const BarchartTitle = [
+  "Types of Cyber Attacks"
+]
 const BarchartData = [
   { month: "January", desktop: 186, mobile: 80 },
   { month: "February", desktop: 305, mobile: 200 },
@@ -93,7 +96,24 @@ const threatConfig = {
   ddos: { label: "DDoS Attacks", color: "#41644A" },
   insider: { label: "Insider Threats", color: "#FF4646" },
 } satisfies ChartConfig
+// radar data and config can be added here similarly
+const radarDotsData = [
+  { month: "Malware", desktop: 78 },
+  { month: "Phishing", desktop: 65 },
+  { month: "DDoS", desktop: 52 },
+  { month: "Insider Threats", desktop: 48 },
+  { month: "Ransomware", desktop: 70 },
+  { month: "Zero-Day Exploits", desktop: 60 },
+]
 
+const radarDotsConfig = {
+  desktop: {
+    label: "Threat Severity",
+    color: "#f97316",
+  },
+} satisfies ChartConfig
+// card list data and config can be added here similarly which use image 
+const popularContent = [ { id: 1, title: "Malware Infections", badge: "Critical", image: "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=600", count: 4300, }, { id: 2, title: "Phishing Attempts", badge: "High Risk", image: "https://images.pexels.com/photos/5380654/pexels-photo-5380654.jpeg?auto=compress&cs=tinysrgb&w=600", count: 5100, }, { id: 3, title: "Ransomware Alerts", badge: "Severe", image: "https://images.pexels.com/photos/5380661/pexels-photo-5380661.jpeg?auto=compress&cs=tinysrgb&w=600", count: 2900, } ]; const latestTransition = [ { id: 1, title: "Zero-Day Exploit Detected", badge: "Urgent", image: "https://images.pexels.com/photos/5380659/pexels-photo-5380659.jpeg?auto=compress&cs=tinysrgb&w=600", count: 5200, }, { id: 2, title: "Suspicious Login Attempts", badge: "Auth", image: "https://images.pexels.com/photos/5380640/pexels-photo-5380640.jpeg?auto=compress&cs=tinysrgb&w=600", count: 4500, }, { id: 3, title: "API Abuse Activity", badge: "Backend", image: "https://images.pexels.com/photos/5380651/pexels-photo-5380651.jpeg?auto=compress&cs=tinysrgb&w=600", count: 5700, } ];
 
 /* ---------------- PAGE ---------------- */
 
@@ -102,17 +122,28 @@ export default function Page() {
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-4">
       <div className="bg-primary-foreground p-4 rounded-lg lg:col-span-2 xl:col-span-1 2xl:col-span-2">
         <AppBarChart
+          BarchartTitle={BarchartTitle}
           BarchartData={BarchartData}
           BarchartConfig={BarchartConfig}
         />
       </div>
 
       <div className="bg-primary-foreground p-4 rounded-lg">
-        <Cardlist title="Lastest Attack" />
+        <CardList
+            title="Latest Security Events"
+            items={latestTransition}
+          />
       </div>
 
       <div className="bg-primary-foreground p-4 rounded-lg">
-        <ChartRadarDots />
+        <ChartRadarDots
+                title="Threat Severity Distribution"
+                description="Analysis of cyber threat intensity across major attack vectors"
+                chartData={radarDotsData}
+                chartConfig={radarDotsConfig}
+                footerText="Elevated risk detected"
+                footerSubText="Last 30 Days · Security Operations Center (SOC)"
+              />
       </div>
 
       <div className="bg-primary-foreground p-4 rounded-lg">

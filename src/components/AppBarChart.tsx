@@ -6,19 +6,22 @@ type BarChartDataItem = {
   desktop: number
   mobile: number
 }
+
 type AppBarChartProps = {
+  BarchartTitle: string
   BarchartData: BarChartDataItem[]
   BarchartConfig: ChartConfig
 }
 
 const AppBarChart = ({
+  BarchartTitle,
   BarchartData,
   BarchartConfig,
 }: AppBarChartProps) => {
 
   return (
     <div className="AppBarChart">
-        <h1 className="text-lg font-bold text-center mb-5">Types of Cyber Attacks</h1>
+        <h1 className="text-lg font-bold text-center mb-5">{BarchartTitle}</h1>
     <ChartContainer config={BarchartConfig} className="min-h-[200px] w-full">
       <BarChart accessibilityLayer data={BarchartData}>
          <CartesianGrid vertical={false} />

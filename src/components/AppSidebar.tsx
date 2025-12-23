@@ -1,38 +1,11 @@
-import {Home , Inbox , Calendar , Search , Settings, User2, ChevronUp, LogOut, User2Icon, Plus, Projector, ChevronDown} from "lucide-react"
-import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem, SidebarSeparator } from "./ui/sidebar"
+import { Settings, User2, Activity, School , BookOpenText, Shield ,     ChevronUp, LogOut, User2Icon,Projector, } from "lucide-react"
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem, SidebarSeparator } from "./ui/sidebar"
 import Link from "next/link"
 import Image from "next/image"
 import { DropdownMenu, DropdownMenuTrigger ,DropdownMenuContent, DropdownMenuItem } from "./ui/dropdown-menu"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible"
 
-const items = [
-    {
-        title:"Home",
-        url:"/",
-        icon:Home
-    },
-    {
-        title:"Users",
-        url:"/users/username",
-        icon:Inbox
-    },
-    {
-        title:"Payment",
-        url:"/payments",
-        icon:Calendar
-    },
-    {
-        title:"Settings",
-        url:"/",
-        icon:Settings
-    },
-    {
-        title:"Search",
-        url:"/",
-        icon:Search
-    },
-    
-]
+
+
 const AppSidebar = () => {
   return (
     <Sidebar collapsible="icon" >
@@ -43,8 +16,8 @@ const AppSidebar = () => {
                             <Link href="/">
                             <Image src="/favicon.ico" alt="logo"
                             width={20} height={20}/>
-                            <span>
-                              Multi Purpose Dashboard 
+                            <span className="text-xl font-extrabold">
+                             Dashboard 
                             </span>
                             </Link>
                          </SidebarMenuButton>
@@ -65,9 +38,9 @@ const AppSidebar = () => {
       
       <SidebarMenuItem>
         <SidebarMenuButton asChild>
-          <Link href="/#">
-            <Projector />
-            Cyber Security Dashboard
+          <Link href="/#" className="text-l font-extrabold">
+            <Shield />
+            Cyber Security
           </Link>
         </SidebarMenuButton>
 
@@ -103,9 +76,9 @@ const AppSidebar = () => {
       {/* Incident Response ITEM */}
       <SidebarMenuItem>
         <SidebarMenuButton asChild>
-          <Link href="/college-placement">
-            <Projector />
-            College Placement Dashboard
+          <Link href="/college-placement" className="text-l font-extrabold">
+            <BookOpenText />
+            College Placement 
           </Link>
         </SidebarMenuButton>
 
@@ -141,9 +114,9 @@ const AppSidebar = () => {
       {/* Assets & Monitoring ITEM */}
       <SidebarMenuItem>
         <SidebarMenuButton asChild>
-          <Link href="/campus-operation">
-            <Projector />
-           Campus Operations Dashboard
+          <Link href="/campus-operation" className="text-l font-extrabold">
+            <School/>
+           Campus Operations 
           </Link>
         </SidebarMenuButton>
 
@@ -152,7 +125,7 @@ const AppSidebar = () => {
           <SidebarMenuSubItem>
             <SidebarMenuButton asChild>
               <Link href="/campus-operation">
-              Endpoints
+              Energy Consumption
               </Link>
             </SidebarMenuButton>
           </SidebarMenuSubItem>
@@ -160,14 +133,14 @@ const AppSidebar = () => {
           <SidebarMenuSubItem>
             <SidebarMenuButton asChild>
               <Link href="/campus-operation">
-                Network Monitoring
+               Operations Performance
               </Link>
             </SidebarMenuButton>
           </SidebarMenuSubItem>
            <SidebarMenuSubItem>
             <SidebarMenuButton asChild>
               <Link href="/campus-operation">
-              Vulnerable Assets
+              Maintenance Resolution
               </Link>
             </SidebarMenuButton>
           </SidebarMenuSubItem>
@@ -179,9 +152,9 @@ const AppSidebar = () => {
       {/* Identity & Access ITEM */}
       <SidebarMenuItem>
         <SidebarMenuButton asChild>
-          <Link href="/#">
-            <Projector />
-            Identity & Access
+          <Link href="/fitness" className="text-l font-extrabold">
+            <Activity />
+            Fitness Tracker
           </Link>
         </SidebarMenuButton>
 
@@ -189,23 +162,23 @@ const AppSidebar = () => {
         <SidebarMenuSub>
           <SidebarMenuSubItem>
             <SidebarMenuButton asChild>
-              <Link href="/#">
-              Users
+              <Link href="/fitness">
+              Calorie Burn Trend
               </Link>
             </SidebarMenuButton>
           </SidebarMenuSubItem>
 
           <SidebarMenuSubItem>
             <SidebarMenuButton asChild>
-              <Link href="/#">
-                Login Activity
+              <Link href="/fitness">
+                Recent Workouts
               </Link>
             </SidebarMenuButton>
           </SidebarMenuSubItem>
            <SidebarMenuSubItem>
             <SidebarMenuButton asChild>
-              <Link href="/#">
-            Suspicious Access
+              <Link href="/fitness">
+              Workout Completed
               </Link>
             </SidebarMenuButton>
           </SidebarMenuSubItem>
@@ -218,8 +191,8 @@ const AppSidebar = () => {
       {/* System ITEM */}
       <SidebarMenuItem>
         <SidebarMenuButton asChild>
-          <Link href="/#">
-            <Projector />
+          <Link href="/#" className="text-l font-extrabold">
+            <User2/>
             System
           </Link>
         </SidebarMenuButton>
@@ -228,28 +201,21 @@ const AppSidebar = () => {
         <SidebarMenuSub>
           <SidebarMenuSubItem>
             <SidebarMenuButton asChild>
-              <Link href="/#">
-             Settings
+              <Link href="/users">
+             User
               </Link>
             </SidebarMenuButton>
           </SidebarMenuSubItem>
 
           <SidebarMenuSubItem>
             <SidebarMenuButton asChild>
-              <Link href="/#">
+              <Link href="/users">
                 Login Activity
               </Link>
             </SidebarMenuButton>
           </SidebarMenuSubItem>
-           <SidebarMenuSubItem>
-            <SidebarMenuButton asChild>
-              <Link href="/#">
-            Suspicious Access
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuSubItem>
-          
-        </SidebarMenuSub>
+  
+       </SidebarMenuSub>
         
         
         
@@ -272,14 +238,13 @@ const AppSidebar = () => {
                         </SidebarMenuButton>
                      </DropdownMenuTrigger>
                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem>
+                        <DropdownMenuItem >
                             <User2Icon/>
-                           Account 
+                            <Link href="/users">
+                              Account
+                            </Link>
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
-                            <Settings/>
-                            Settings
-                        </DropdownMenuItem>
+                        
                         <DropdownMenuItem variant="destructive">
                             <LogOut/>
                             Signout

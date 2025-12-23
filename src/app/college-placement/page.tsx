@@ -18,7 +18,7 @@ const placementData = [
 const placementConfig = {
   placed: {
     label: "Students Placed",
-    color: "#16a34a",
+    color: "#ac3b02",
   },
   label: {
     color: "var(--background)",
@@ -74,11 +74,11 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "On-Campus Placements",
-    color: "#16a34a", // green (success)
+    color: "#ac3b02", // green (success)
   },
   mobile: {
     label: "Off-Campus Placements",
-    color: "#2563eb", // blue
+    color: "#ff7a22", // blue
   },
 } satisfies ChartConfig;
 // pie chart data and config can be added here similarly

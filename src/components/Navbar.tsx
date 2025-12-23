@@ -1,6 +1,6 @@
 "use client"
 import { LogOut, Menu, MenuIcon, Moon, Settings, Sun, User } from 'lucide-react'
-import React from 'react'
+
 import Link from 'next/link'
 import { Avatar, AvatarImage,AvatarFallback } from './ui/avatar'
 import {
@@ -19,15 +19,16 @@ const Navbar = () => {
   const {theme , setTheme } = useTheme();
   const {toggleSidebar} = useSidebar();
   return (
-    <nav className='p-4 flex items-center justify-between sticky top-0 bg-background z-10'>
+    <nav className='p-4 flex items-center bg-primary-foreground m-4 rounded-lg justify-between sticky top-0  z-10  '>
         {/* Left */}
         <SidebarTrigger/>
         {/* <Button variant="outline" onClick={toggleSidebar}>
           <MenuIcon/>
         </Button> */}
         {/* Right */}
+        <h1 className="text-3xl font-extrabold "> Dashboard UI/UX Architecture </h1>
+
         <div className='flex items-center gap-4'>
-          <Link href="/">DashBoard</Link>
           {/* theme dropdow */}
            <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -49,6 +50,8 @@ const Navbar = () => {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+          <Link href="/">Prajwal</Link>
+          
           {/* User dropdown */}
          <DropdownMenu>
               <DropdownMenuTrigger>
@@ -59,14 +62,14 @@ const Navbar = () => {
               </DropdownMenuTrigger>
            <DropdownMenuContent>
              <DropdownMenuLabel>
-              My Account
+               <span className='text-l font-extrabold'>My Account</span>
               </DropdownMenuLabel>
              <DropdownMenuSeparator />
              <DropdownMenuItem>
-               <User className='h-[1.2rem] w-[1.2rem] mr-2'/> Profile
-               </DropdownMenuItem>
-             <DropdownMenuItem>
-              <Settings className='h-[1.2rem] w-[1.2rem] mr-2'/>Settings
+               <User className='h-[1.2rem] w-[1.2rem] mr-2'/> 
+               <Link href="/users">
+                  Profile
+               </Link>
                </DropdownMenuItem>
              <DropdownMenuItem variant='destructive'>
               <LogOut className='h-[1.2rem] w-[1.2rem] mr-2'/> Logout

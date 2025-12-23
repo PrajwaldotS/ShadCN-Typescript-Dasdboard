@@ -1,6 +1,6 @@
 "use client"
 
-import { Activity, TrendingUp } from "lucide-react"
+import { TrendingUp } from "lucide-react"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
 import {
@@ -18,74 +18,84 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart"
 
-export const description = "A step area chart"
+/* -------------------- TYPES -------------------- */
 
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-]
+type StepChartData = Record<string, string | number>
 
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
-    icon: Activity,
-  },
-} satisfies ChartConfig
+type AppStepChartProps = {
+  title: string
+  description: string
+  chartData: StepChartData[]
+  chartConfig: ChartConfig
+  xKey?: string
+  areaKey?: string
+  footerText: string
+  footerSubText: string
+}
 
-export function AppStepChart() {
+/* -------------------- COMPONENT -------------------- */
+
+export function AppStepChart({
+  title,
+  description,
+  chartData,
+  chartConfig,
+  xKey = "month",
+  areaKey = "desktop",
+  footerText,
+  footerSubText,
+}: AppStepChartProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Area Chart - Step</CardTitle>
-        <CardDescription>
-          Showing total visitors for the last 6 months
-        </CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
+
       <CardContent>
         <ChartContainer config={chartConfig}>
           <AreaChart
             accessibilityLayer
             data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
+            margin={{ left: 12, right: 12 }}
           >
             <CartesianGrid vertical={false} />
+
             <XAxis
-              dataKey="month"
+              dataKey={xKey}
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
+              tickFormatter={(value) =>
+                typeof value === "string" ? value.slice(0, 3) : value
+              }
             />
+
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
+
             <Area
-              dataKey="desktop"
+              dataKey={areaKey}
               type="step"
-              fill="var(--color-desktop)"
+              fill={`var(--color-${areaKey})`}
               fillOpacity={0.4}
-              stroke="var(--color-desktop)"
+              stroke={`var(--color-${areaKey})`}
             />
           </AreaChart>
         </ChartContainer>
       </CardContent>
+
       <CardFooter>
         <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
-            <div className="flex items-center gap-2 leading-none font-medium">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+            <div className="flex items-center gap-2 font-medium leading-none">
+              {footerText}
+              <TrendingUp className="h-4 w-4" />
             </div>
-            <div className="text-muted-foreground flex items-center gap-2 leading-none">
-              January - June 2024
+            <div className="text-muted-foreground leading-none">
+              {footerSubText}
             </div>
           </div>
         </div>

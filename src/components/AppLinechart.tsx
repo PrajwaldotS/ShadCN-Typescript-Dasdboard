@@ -18,79 +18,89 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart"
 
-export const description = "A multiple line chart"
+/* -------------------- TYPES -------------------- */
 
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-]
+type LineConfig = {
+  dataKey: string
+  strokeVar: string
+}
 
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig
+type LineChartData = Record<string, string | number>
 
-export function AppLinechart() {
+type AppLineChartProps = {
+  title: string
+  description: string
+  chartData: LineChartData[]
+  chartConfig: ChartConfig
+  xKey?: string
+  lines: LineConfig[]
+  footerText: string
+  footerSubText: string
+}
+
+/* -------------------- COMPONENT -------------------- */
+
+export function AppLineChart({
+  title,
+  description,
+  chartData,
+  chartConfig,
+  xKey = "month",
+  lines,
+  footerText,
+  footerSubText,
+}: AppLineChartProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart - Multiple</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
+
       <CardContent>
         <ChartContainer config={chartConfig}>
           <LineChart
             accessibilityLayer
             data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
+            margin={{ left: 12, right: 12 }}
           >
             <CartesianGrid vertical={false} />
+
             <XAxis
-              dataKey="month"
+              dataKey={xKey}
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
+              tickFormatter={(value) =>
+                typeof value === "string" ? value.slice(0, 3) : value
+              }
             />
+
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-            <Line
-              dataKey="desktop"
-              type="monotone"
-              stroke="var(--color-desktop)"
-              strokeWidth={2}
-              dot={false}
-            />
-            <Line
-              dataKey="mobile"
-              type="monotone"
-              stroke="var(--color-mobile)"
-              strokeWidth={2}
-              dot={false}
-            />
+
+            {lines.map((line) => (
+              <Line
+                key={line.dataKey}
+                dataKey={line.dataKey}
+                type="monotone"
+                stroke={`var(--color-${line.strokeVar})`}
+                strokeWidth={2}
+                dot={false}
+              />
+            ))}
           </LineChart>
         </ChartContainer>
       </CardContent>
+
       <CardFooter>
         <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
-            <div className="flex items-center gap-2 leading-none font-medium">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+            <div className="flex items-center gap-2 font-medium leading-none">
+              {footerText}
+              <TrendingUp className="h-4 w-4" />
             </div>
-            <div className="text-muted-foreground flex items-center gap-2 leading-none">
-              Showing total visitors for the last 6 months
+            <div className="text-muted-foreground leading-none">
+              {footerSubText}
             </div>
           </div>
         </div>

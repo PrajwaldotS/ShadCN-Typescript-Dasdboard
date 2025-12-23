@@ -4,70 +4,54 @@ import { Card, CardContent, CardFooter, CardTitle } from "./ui/card";
 const popularContent = [
   {
     id: 1,
-    title: "JavaScript Tutorial",
-    badge: "Coding",
+    title: "Malware Infections",
+    badge: "Critical",
     image:
-      "https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=600",
     count: 4300,
   },
   {
     id: 2,
-    title: "React Beginner Guide",
-    badge: "Frontend",
+    title: "Phishing Attempts",
+    badge: "High Risk",
     image:
-      "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/5380654/pexels-photo-5380654.jpeg?auto=compress&cs=tinysrgb&w=600",
     count: 5100,
   },
   {
     id: 3,
-    title: "Node.js Crash Course",
-    badge: "Backend",
+    title: "Ransomware Alerts",
+    badge: "Severe",
     image:
-      "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/5380661/pexels-photo-5380661.jpeg?auto=compress&cs=tinysrgb&w=600",
     count: 2900,
-  },
-  {
-    id: 4,
-    title: "Full Stack Roadmap",
-    badge: "Career",
-    image:
-      "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600",
-    count: 7200,
   }
-  
 ];
+
 const latestTransition = [
   {
     id: 1,
-    title: "React Animation Effects",
-    badge: "Transition",
+    title: "Zero-Day Exploit Detected",
+    badge: "Urgent",
     image:
-      "https://images.pexels.com/photos/3194512/pexels-photo-3194512.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/5380659/pexels-photo-5380659.jpeg?auto=compress&cs=tinysrgb&w=600",
     count: 5200,
   },
   {
     id: 2,
-    title: "CSS Hover Magic",
-    badge: "CSS",
+    title: "Suspicious Login Attempts",
+    badge: "Auth",
     image:
-      "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/5380640/pexels-photo-5380640.jpeg?auto=compress&cs=tinysrgb&w=600",
     count: 4500,
   },
   {
     id: 3,
-    title: "Next.js Page Transitions",
-    badge: "Next.js",
+    title: "API Abuse Activity",
+    badge: "Backend",
     image:
-      "https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/5380651/pexels-photo-5380651.jpeg?auto=compress&cs=tinysrgb&w=600",
     count: 5700,
-  },
-  {
-    id: 4,
-    title: "Framer Motion Basics",
-    badge: "Animation",
-    image:
-      "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&w=600",
-    count: 6200,
   }
 ];
 
@@ -75,7 +59,7 @@ const latestTransition = [
 const Cardlist = ({ title }: {title:string}) => {
     const list = title.toLowerCase() === "popularContent" ? popularContent : latestTransition
   return (
-    <div>
+    <div >
       <h1 className='text-lg font-medium mb-6'>{title}</h1>
       <div className="flex flex-col gap-2">
         {list.map(item=>(

@@ -44,7 +44,7 @@ const AppSidebar = () => {
                             <Image src="/favicon.ico" alt="logo"
                             width={20} height={20}/>
                             <span>
-                                DashBoard
+                              Multi Purpose Dashboard 
                             </span>
                             </Link>
                          </SidebarMenuButton>
@@ -53,154 +53,30 @@ const AppSidebar = () => {
         </SidebarHeader>
         <SidebarSeparator/>
         <SidebarContent className="sidebarcontent">
-            <SidebarGroup>
-                <SidebarGroupLabel>
-                    Application 
-                </SidebarGroupLabel>
-                <SidebarMenu>
-                  {items.map((item)=>(
-                      <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild>
-                           <Link href={item.url}>
-                            <item.icon/>
-                            <span>{item.title}</span>
-                           </Link> 
-                        </SidebarMenuButton>
-                    {item.title === "Inbox" && (
-                        <SidebarMenuBadge>35</SidebarMenuBadge>
-                    )}
-                </SidebarMenuItem>
-                  ))}
-                </SidebarMenu>
-            </SidebarGroup>
-            {/* Collapsible sidebar section */}
-            <Collapsible>
-            <SidebarGroup>
-            
-                <SidebarGroupLabel>
-                   Collapsible  Projects
-                </SidebarGroupLabel>
-                <SidebarMenuAction>
-                    <CollapsibleTrigger asChild>
-                <ChevronDown  className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180"/>
-                </CollapsibleTrigger><span className="sr-only">Add Project</span>
-                </SidebarMenuAction>
-                <SidebarGroupContent>
-                    <SidebarMenu>
-                        <SidebarMenuItem>
-                          <SidebarMenuButton asChild>
-                             
-                            <Link href="/#">
-                            <Projector/>
-                            See All Project
-                            </Link>
-                            
-                           </SidebarMenuButton>  
-                        </SidebarMenuItem>
-                        <CollapsibleContent>
-                         <SidebarMenuItem>
-                       <SidebarMenuButton asChild>
-                            <Link href="/#">
-                            <Plus/>
-                            Add Project
-                            </Link>
-                           </SidebarMenuButton>  
-                           
-                        </SidebarMenuItem>
-                        </CollapsibleContent>
-                        
-                         <CollapsibleContent>
-                         <SidebarMenuItem>
-                       <SidebarMenuButton asChild>
-                            <Link href="/#">
-                            <Plus/>
-                            Add Project
-                            </Link>
-                           </SidebarMenuButton>  
-                           
-                        </SidebarMenuItem>
-                        </CollapsibleContent>
-                           <CollapsibleContent>
-                         <SidebarMenuItem>
-                       <SidebarMenuButton asChild>
-                            <Link href="/#">
-                            <Plus/>
-                            Add Project
-                            </Link>
-                           </SidebarMenuButton>  
-                           
-                        </SidebarMenuItem>
-                        </CollapsibleContent>
-                           <CollapsibleContent>
-                         <SidebarMenuItem>
-                       <SidebarMenuButton asChild>
-                            <Link href="/#">
-                            <Plus/>
-                            Add Project
-                            </Link>
-                           </SidebarMenuButton>  
-                           
-                        </SidebarMenuItem>
-                        </CollapsibleContent>
-                    </SidebarMenu>
-                </SidebarGroupContent>
-            </SidebarGroup>
-            </Collapsible>
-              <SidebarGroup>
-             <SidebarGroupLabel>
-                    Projects
-                </SidebarGroupLabel>
-                <SidebarMenuAction>
-                    <Plus/><span className="sr-only">Add Project</span>
-                </SidebarMenuAction>
-                <SidebarGroupContent>
-                    <SidebarMenu>
-                        <SidebarMenuItem>
-                          <SidebarMenuButton asChild>
-                            <Link href="/#">
-                            <Projector/>
-                            See All Project
-                            </Link>
-                           </SidebarMenuButton>  
-                        </SidebarMenuItem>
-                         <SidebarMenuItem>
-                          <SidebarMenuButton asChild>
-                            <Link href="/#">
-                            <Plus/>
-                            Add Project
-                            </Link>
-                           </SidebarMenuButton>  
-                        </SidebarMenuItem>
-                    </SidebarMenu>
-                </SidebarGroupContent>
-            </SidebarGroup>
-            <SidebarGroup>
-  <SidebarGroupLabel>Sub Projects</SidebarGroupLabel>
-
-  <SidebarMenuAction>
-    <Plus />
-    <span className="sr-only">Add Project</span>
-  </SidebarMenuAction>
-
+           
+           
+           
+<SidebarGroup>
+  
   <SidebarGroupContent>
     <SidebarMenu>
 
-      {/* MAIN ITEM */}
+      {/* Security Overview ITEM */}
+      
       <SidebarMenuItem>
         <SidebarMenuButton asChild>
           <Link href="/#">
             <Projector />
-            See All Project
+            Cyber Security Dashboard
           </Link>
         </SidebarMenuButton>
 
-        {/* SUB ITEMS */}
+        {/*  SUB ITEMS */}
         <SidebarMenuSub>
           <SidebarMenuSubItem>
             <SidebarMenuButton asChild>
               <Link href="/#">
-                <Plus />
-                Add Project
+               Threat Analytics
               </Link>
             </SidebarMenuButton>
           </SidebarMenuSubItem>
@@ -208,13 +84,177 @@ const AppSidebar = () => {
           <SidebarMenuSubItem>
             <SidebarMenuButton asChild>
               <Link href="/#">
-                <Plus />
-                Add Project
+                Cyber Attack Volume Trend
               </Link>
             </SidebarMenuButton>
           </SidebarMenuSubItem>
+           <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/#">
+              Total Threat Dectection 
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+          
         </SidebarMenuSub>
+        
+        
       </SidebarMenuItem>
+      {/* Incident Response ITEM */}
+      <SidebarMenuItem>
+        <SidebarMenuButton asChild>
+          <Link href="/college-placement">
+            <Projector />
+            College Placement Dashboard
+          </Link>
+        </SidebarMenuButton>
+
+        {/*  SUB ITEMS */}
+        <SidebarMenuSub>
+          <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/college-placement">
+               Branch-wise Placement
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+
+          <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/college-placement">
+                Internship vs Full-time  
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+           <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/college-placement">
+              Year-wise placement 
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+          
+        </SidebarMenuSub>
+        
+        
+      </SidebarMenuItem>
+      {/* Assets & Monitoring ITEM */}
+      <SidebarMenuItem>
+        <SidebarMenuButton asChild>
+          <Link href="/campus-operation">
+            <Projector />
+           Campus Operations Dashboard
+          </Link>
+        </SidebarMenuButton>
+
+        {/*  SUB ITEMS */}
+        <SidebarMenuSub>
+          <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/campus-operation">
+              Endpoints
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+
+          <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/campus-operation">
+                Network Monitoring
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+           <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/campus-operation">
+              Vulnerable Assets
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+          
+        </SidebarMenuSub>
+        
+        
+      </SidebarMenuItem>
+      {/* Identity & Access ITEM */}
+      <SidebarMenuItem>
+        <SidebarMenuButton asChild>
+          <Link href="/#">
+            <Projector />
+            Identity & Access
+          </Link>
+        </SidebarMenuButton>
+
+        {/*  SUB ITEMS */}
+        <SidebarMenuSub>
+          <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/#">
+              Users
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+
+          <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/#">
+                Login Activity
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+           <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/#">
+            Suspicious Access
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+          
+        </SidebarMenuSub>
+        
+        
+        
+      </SidebarMenuItem>
+      {/* System ITEM */}
+      <SidebarMenuItem>
+        <SidebarMenuButton asChild>
+          <Link href="/#">
+            <Projector />
+            System
+          </Link>
+        </SidebarMenuButton>
+
+        {/*  SUB ITEMS */}
+        <SidebarMenuSub>
+          <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/#">
+             Settings
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+
+          <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/#">
+                Login Activity
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+           <SidebarMenuSubItem>
+            <SidebarMenuButton asChild>
+              <Link href="/#">
+            Suspicious Access
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuSubItem>
+          
+        </SidebarMenuSub>
+        
+        
+        
+      </SidebarMenuItem>
+      
 
     </SidebarMenu>
   </SidebarGroupContent>

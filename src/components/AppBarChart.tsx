@@ -1,32 +1,26 @@
 "use client";
-
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { ChartConfig, ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from "./ui/chart";
+type BarChartDataItem = {
+  month: string
+  desktop: number
+  mobile: number
+}
+type AppBarChartProps = {
+  BarchartData: BarChartDataItem[]
+  BarchartConfig: ChartConfig
+}
 
-const AppBarChart = () => {
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-]
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "#2563eb",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "#60a5fa",
-  },
-} satisfies ChartConfig;
+const AppBarChart = ({
+  BarchartData,
+  BarchartConfig,
+}: AppBarChartProps) => {
+
   return (
     <div className="AppBarChart">
-        <h1 className="text-lg font-bold text-center mb-5">Total Revenue</h1>
-    <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-      <BarChart accessibilityLayer data={chartData}>
+        <h1 className="text-lg font-bold text-center mb-5">Types of Cyber Attacks</h1>
+    <ChartContainer config={BarchartConfig} className="min-h-[200px] w-full">
+      <BarChart accessibilityLayer data={BarchartData}>
          <CartesianGrid vertical={false} />
          <XAxis
       dataKey="month"

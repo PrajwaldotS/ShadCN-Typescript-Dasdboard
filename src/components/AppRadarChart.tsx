@@ -12,37 +12,37 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import {
-  ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "@/components/ui/chart"
 
-export const description = "A radar chart with dots"
+export const description = "A radar chart with a grid filled"
 
 const chartData = [
-  { month: "Malware", desktop: 78 },
-  { month: "Phishing", desktop: 65 },
-  { month: "DDoS", desktop: 52 },
-  { month: "Insider Threats", desktop: 48 },
-  { month: "Ransomware", desktop: 70 },
-  { month: "Zero-Day Exploits", desktop: 60 },
-];
+  { month: "January", desktop: 186 },
+  { month: "February", desktop: 285 },
+  { month: "March", desktop: 237 },
+  { month: "April", desktop: 203 },
+  { month: "May", desktop: 209 },
+  { month: "June", desktop: 264 },
+]
 
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "#f97316",
+    color: "var(--chart-1)",
   },
 } satisfies ChartConfig
 
-export function ChartRadarDots() {
+export function AppRadarChart() {
   return (
     <Card>
-      <CardHeader className="items-center">
-        <CardTitle>Threat Severity Distribution</CardTitle>
+      <CardHeader className="items-center pb-4">
+        <CardTitle>Radar Chart - Grid Filled</CardTitle>
         <CardDescription>
-         Analysis of cyber threat intensity across major attack vectors.
+          Showing total visitors for the last 6 months
         </CardDescription>
       </CardHeader>
       <CardContent className="pb-0">
@@ -51,27 +51,26 @@ export function ChartRadarDots() {
           className="mx-auto aspect-square max-h-[250px]"
         >
           <RadarChart data={chartData}>
-            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
+            <PolarGrid className="fill-(--color-desktop) opacity-20" />
             <PolarAngleAxis dataKey="month" />
-            <PolarGrid />
             <Radar
               dataKey="desktop"
               fill="var(--color-desktop)"
-              fillOpacity={0.6}
-              dot={{
-                r: 4,
-                fillOpacity: 1,
-              }}
+              fillOpacity={0.5}
             />
           </RadarChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 leading-none font-medium">
-          Elevated risk detected <TrendingUp className="h-4 w-4" />
+          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>
-        <div className="text-muted-foreground text-center flex items-center gap-2 leading-none">
-          Last 30 Days <br /> Security Operations Center (SOC)
+        <div className="text-muted-foreground flex items-center gap-2 leading-none">
+          January - June 2024
         </div>
       </CardFooter>
     </Card>

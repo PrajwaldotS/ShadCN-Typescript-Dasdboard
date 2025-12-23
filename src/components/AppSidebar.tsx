@@ -191,7 +191,7 @@ const AppSidebar = () => {
       {/* System ITEM */}
       <SidebarMenuItem>
         <SidebarMenuButton asChild>
-          <Link href="/#" className="text-l font-extrabold">
+          <Link href="/users" className="text-l font-extrabold">
             <User2/>
             System
           </Link>

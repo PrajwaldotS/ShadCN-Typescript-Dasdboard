@@ -18,7 +18,7 @@ export type SectionCard = {
   description: string
   value: string
   trend: {
-    type: TrendType
+    type: "up" | "down"
     percentage: string
   }
   highlight: string

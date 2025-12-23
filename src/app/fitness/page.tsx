@@ -2,18 +2,16 @@ import { AppAreaChart } from "@/components/AppAreaChart"
 import AppBarChart from "@/components/AppBarChart"
 import Appradialchart from "@/components/Appradialchart"
 import CardList from "@/components/Cardlist"
-import Cardlist from "@/components/Cardlist"
 import { ChartRadarDots }   from "@/components/ChartRadarDots"
 import { ChartConfig } from "@/components/ui/chart"
-import { SectionCards } from "@/components/ui/sectioncard"
+import { SectionCards , SectionCard } from "@/components/ui/sectioncard"
 
 export type TrendType = "up" | "down"
 
 /* ---------------- BAR CHART DATA ---------------- */
 /* Workout type comparison */
-const BarchartTitle = [
-  "Workout Type Comparison"
-]
+const BarchartTitle = "Workout Type Comparison"
+
 const BarchartData = [
   { month: "January", desktop: 42, mobile: 28 },
   { month: "February", desktop: 55, mobile: 36 },
@@ -36,7 +34,7 @@ const BarchartConfig = {
 
 /* ---------------- SECTION CARDS DATA ---------------- */
 
-const securityStatsCards = [
+export const securityStatsCards: SectionCard[] = [
   {
     id: 1,
     description: "Total Workouts Completed",
@@ -228,7 +226,7 @@ export default function Page() {
       {/* Activity List */}
       <div className="bg-primary-foreground p-4 rounded-lg">
         <CardList
-            title="Latest Security Events"
+            title="Latest  Fitness Events"
             items={latestTransition}
           />
       </div>

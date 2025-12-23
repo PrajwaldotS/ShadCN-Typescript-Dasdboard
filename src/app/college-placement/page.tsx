@@ -1,6 +1,6 @@
 import { AppAreaChart } from "@/components/AppAreaChart"
 import Appradialchart from "@/components/Appradialchart"
-import { SectionCards } from "@/components/ui/sectioncard"
+import { SectionCards ,SectionCard } from "@/components/ui/sectioncard"
 import {  Sidebarchart } from "@/components/Sidebarchart"
 import { AppPieChart } from "@/components/AppPiechart"
 import { ChartConfig } from "@/components/ui/chart"
@@ -26,7 +26,7 @@ const placementConfig = {
 } satisfies ChartConfig
 /* ---------------- SECTION CARD DATA (PLAIN OBJECTS ONLY) ---------------- */
 
-export const placementStatsCards = [
+export const placementStatsCards: SectionCard[] = [
   {
     id: 1,
     description: "Total Students Placed",
@@ -61,6 +61,7 @@ export const placementStatsCards = [
     subtext: "Improved training and pre-placement preparation",
   },
 ]
+
 // area chart data and config
 const chartData = [
   { month: "January", desktop: 34, mobile: 16 },

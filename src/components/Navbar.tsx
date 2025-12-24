@@ -26,7 +26,7 @@ const Navbar = () => {
           <MenuIcon/>
         </Button> */}
         {/* Right */}
-        <h1 className="text-3xl font-extrabold "> Dashboard UI/UX Architecture </h1>
+        <h1 className="ml-5 text-l lg:text-3xl font-extrabold "> Dashboard UI/UX Architecture </h1>
 
         <div className='flex items-center gap-4'>
           {/* theme dropdow */}

@@ -80,7 +80,7 @@ const SingleUserPage = () => {
   </BreadcrumbList>
 </Breadcrumb>
 {/* Container */}
-    <div className='mt-4 flex felx-col xl:flex-rwo gap-8'>
+    <div className='mt-4 lg:flex flex-col xl:flex-row gap-8'>
       {/* LEFT */}
       <div className="w-full xl:w-1/3 space-y-6">
       {/* USER BADGES CONTAINER */}

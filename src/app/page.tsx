@@ -2,7 +2,7 @@ import { AppAreaChart } from "@/components/AppAreaChart"
 import AppBarChart from "@/components/AppBarChart"
 import Appradialchart from "@/components/Appradialchart"
 import CardList from "@/components/Cardlist"
-import Cardlist from "@/components/Cardlist"
+import type { SectionCard } from "@/components/ui/sectioncard"
 import { ChartRadarDots }  from "@/components/ChartRadarDots"
 import { ChartConfig } from "@/components/ui/chart"
 import { SectionCards } from "@/components/ui/sectioncard"
@@ -10,9 +10,8 @@ import { SectionCards } from "@/components/ui/sectioncard"
 export type TrendType = "up" | "down"
 
 /* ---------------- BAR CHART DATA ---------------- */
-const BarchartTitle = [
-  "Types of Cyber Attacks"
-]
+const BarchartTitle = "Types of Cyber Attacks"
+
 const BarchartData = [
   { month: "January", desktop: 186, mobile: 80 },
   { month: "February", desktop: 305, mobile: 200 },
@@ -35,7 +34,7 @@ const BarchartConfig = {
 
 /* ---------------- SECTION CARDS DATA (PLAIN OBJECTS ONLY) ---------------- */
 
-const securityStatsCards = [
+const securityStatsCards: SectionCard[] = [
   {
     id: 1,
     description: "Total Threat Detections",
@@ -58,7 +57,7 @@ const securityStatsCards = [
     highlight: "Expanded endpoint security coverage",
     subtext: "Devices actively monitored by SOC tools",
   },
-]
+] 
 // area chart data and config can be added here similarly
 const chartData = [
   { month: "January", desktop: 340, mobile: 160 },

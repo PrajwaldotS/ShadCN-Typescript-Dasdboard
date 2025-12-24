@@ -78,6 +78,7 @@ export function AppRadialTextChart({
         >
           <RadialBarChart
             data={chartData}
+            dataKey={valueKey}
             startAngle={startAngle}
             endAngle={endAngle}
             innerRadius={innerRadius}
@@ -93,7 +94,6 @@ export function AppRadialTextChart({
 
             <RadialBar
               dataKey={valueKey}
-              nameKey={nameKey}
               background
               cornerRadius={10}
             />
